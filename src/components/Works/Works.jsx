@@ -8,6 +8,10 @@ import Facebook from "../../img/Facebook.png";
 import { themeContext } from "../../Context";
 import { motion } from "framer-motion";
 import {Link} from 'react-scroll'
+import { LoadingOutlined, SmileOutlined, SolutionOutlined, UserOutlined } from '@ant-design/icons';
+import { Steps } from 'antd';
+
+const { Step } = Steps;
 const Works = () => {
   // context
   const theme = useContext(themeContext);
@@ -21,19 +25,19 @@ const Works = () => {
         <div className="awesome">
           {/* dark Mode */}
           <span style={{ color: darkMode ? "white" : "" }}>
-            Works for All these
+            My Journey 
           </span>
-          <span>Brands & Clients</span>
-          <spane>
-            Lorem ispum is simpley dummy text of printing of printing Lorem
-            <br />
-            ispum is simpley dummy text of printingLorem ispum is simpley dummy
-            text
-            <br />
-            y dummy text of printingLorem
-            <br />
-            ispum is simpley dummy text of printing
-          </spane>
+          <span>to the path of learning...</span>
+          <span>
+          <div>
+            <Steps  current={3}>
+    <Step  title=".. "  description="CSA"icon={<UserOutlined />} />
+    <Step status="finish" title=".. "  description="Junior Engineer" icon={<SolutionOutlined />} />
+    <Step status="process" title=".. "  description="Learning..." icon={<LoadingOutlined />} />
+    <Step status="wait"  title=".. " description="Life Goes On..." icon={<SmileOutlined />} />
+  </Steps>
+  </div>
+          </span>
           <Link to="contact" smooth={true} spy={true}>
             <button className="button s-button">Hire Me</button>
           </Link>

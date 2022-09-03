@@ -29,15 +29,16 @@ const Intro = () => {
           {/* yahan change hy darkmode ka */}
           <span style={{ color: darkMode ? "white" : "" }}>Hy! I Am</span>
           <span>Lovejot Singh</span>
-          <span>
+          <span >
             Frontend Developer with high level of experience in web
             development, producting the Quality work.
-           <p> A person with an ambition to achieve some goals,with a little sprinkle of Joy and creativity.</p>
+           <p style={{fontSize:"15px"}}> A person with an ambition to achieve some goals,with a little sprinkle of Joy and creativity.</p>
            {/* <ul>
              <li>High potential</li>
              <li>Growth oriented</li>
            </ul> */}
           </span>
+        
         </div>
         <Link to="contact" smooth={true} spy={true}>
           <button className="button i-button">Hire me</button>
@@ -46,14 +47,14 @@ const Intro = () => {
         <div className="i-icons">
           <a target="_blank"  href="https://github.com/Lovejotsaini"><img src={Github} alt="" /></a>
           <a target="_blank" href="https://linkedin.com/in/lovejot-singh-b9997b218"><img src={LinkedIn} alt="" /></a>
-          <img src={Instagram} alt="" />
+          <a target="_blank" href="https://www.instagram.com/lovejot_saini/"><img  src={Instagram} alt="" /></a>
         </div>
       </div>
       {/* right image side */}
       <div className="i-right">
         <img src={Vector1} alt="" />
         <img src={Vector2} alt="" />
-        <img src={boy} alt="" />
+      <img style={{width:"583px",    marginLeft: "-164px"}} src={boy} alt="" />
         {/* animation */}
         <motion.img
           initial={{ left: "-36%" }}
