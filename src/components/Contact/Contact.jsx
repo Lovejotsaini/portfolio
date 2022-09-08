@@ -5,14 +5,17 @@ import { themeContext } from "../../Context";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../../fbase";
 
-async function addContact(data) {
+async function addContact(e, data) {
+  e.preventDefault();
   const { name, email, message } = data;
-  const docRef = await addDoc(collection(db, "users"), {
-    name: name,
-    email: email,
-    message: message
-  });
-  console.log("Document written with ID: ", docRef.id);
+  if (name&&email&&message) { 
+    const docRef = await addDoc(collection(db, "users"), {
+      name: name,
+      email: email,
+      message: message
+    });
+    console.log("Document written with ID: ", docRef.id);
+  }
 }
 
 
@@ -22,20 +25,12 @@ const Contact = () => {
   const darkMode = theme.state.darkMode;
   const form = useRef();
   const [done, setDone] = useState(false)
-  const [Form, setForm] = useState({
-    "name": '',
-    "email": '',
-    "message": ''
-  })
-  const getFormValues = (event) => {
-    // setForm({ ...form , event.target?.name:event.target.value })
-    setForm((prevState) => ({
-      ...prevState,
-      event?.target?.name: event.target.value,
-    }))
-    console.log("Form values: ", event.target.value)
+  const chorm = {
+    'name': '',
+    'email': '',
+    'message': ''
   }
-
+  const getFormValues = (event) => chorm[event.target.name] = event.target.value
 
 
   return (
@@ -54,7 +49,7 @@ const Contact = () => {
       </div>
       {/* right side form */}
       <div className="c-right">
-        <form ref={form} onSubmit={addContact(Form)}>
+        <form ref={form} onSubmit={(e) => addContact(e, chorm)}>
           <input type="text" name="name" className="user" placeholder="Name" onChange={(event) => {
             return getFormValues(event);
           }} />
@@ -63,7 +58,7 @@ const Contact = () => {
           }} />
           <textarea name="message" className="user" placeholder="Message" onChange={(event) => {
             return getFormValues(event);
-          }}/>
+          }} />
           <input type="submit" value="Send" className="button" />
           <span>{done && "Thanks for Contacting me"}</span>
           <div
